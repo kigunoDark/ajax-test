@@ -1,6 +1,9 @@
 nav{
      background: white;
 }
+.fa-star{
+     color: #ebc634;
+}
 .page-footer{
      background: white;
      height: 8vh;
@@ -36,11 +39,11 @@ nav ul li a{
 
 .price{
      font-weight: bold;
-     font-size: 16px;
+     font-size: 14px;
 
 }
 .title{
-     font-size: 16px;
+     font-size: 14px;
      font-weight: bold;
      text-transform: capitalize;
 }

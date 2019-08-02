@@ -1,6 +1,7 @@
  <%- include('./layouts/navbar.ejs')%>
-     <%= type%>
+
     <div class="wall container"> 
+        
         <div class="row">
         <% for (let i = 0; i < price.length; i++) { %>
             <% if (body.data[i].price !== undefined) { %>
@@ -14,7 +15,13 @@
                         <p class="price"> <%= price[i]%> <i class="fas fa-ruble-sign"></i></p>
                            <% for(let s of sellers.data) { %>
                          <% if (body.data[i].relationships.seller === s.id)  { %>
-                            <p><%=s.name %></p>
+                            <p>
+                                <% if(s.name !== "Строительная компания «Строй-Траст-Инвест") { %>
+                                     <%=s.name %>  <span class="right"> <%= s.rating %> <i class="fas fa-star"></i> </span>
+                                 <% } else { %>
+                                      Строй-Траст-Инвест <span class="right"> <%= s.rating %> <i class="fas fa-star"></i></span>
+                                 <% } %>
+                            </p>
                              <% } %>
                         <% } %>
                         </div>

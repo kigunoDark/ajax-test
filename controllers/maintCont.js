@@ -28,15 +28,7 @@ exports.getMain = (req, res) =>{
                   sellers: sellers
               });
           }
-          for(let s of sellers.data)
-          {
-            if (s.id === body.data[0].relationships.seller)
-            {
-              console.log(s.name);
-            }
-          
-          }
-          console.log(body.data[0].relationships.seller)
+        
         })
     
       
