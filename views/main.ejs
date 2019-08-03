@@ -1,8 +1,30 @@
  <%- include('./layouts/navbar.ejs')%>
 
     <div class="wall container"> 
+        
     <h3 class="center wall-title"> Доска объявлений </h3>
+    <div id="sort">
+        
+        <label>
+            <input class="with-gap" class="sort-type" id="usual" name="group1" type="radio" checked />
+            <span>Обычный список</span>
+        </label>
+
+        <label>
+            <input class="with-gap" class="sort-type" id="raitingSort" name="group1" type="radio" />
+            <span>По рейтингу</span>
+        </label>
+        
+       
+        <label>
+            <input class="with-gap" class="sort-type" id="priceSort"  name="group1" type="radio" />
+            <span>По цене</span>
+        </label>
+       
+        <p>
+    </div>
         <div class="row" id="row">
+        
         </div>   
 
             
