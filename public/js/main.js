@@ -5,3 +5,4 @@
     
  });
 
+ $(".dropdown-trigger").dropdown();

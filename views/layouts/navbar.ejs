@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/materialize.css">
     <link href="/css/main.css" type="text/css" rel="stylesheet"/>
     <title>Avito</title>
 </head>
 <body>
+<div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper ">
     <div class="container">
       <a href="/" class="brand-logo"><img class="image-logo" src="./images/avito_logo.png"/></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-          
-         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Категории</a></li>
+         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class=" new-type fas fa-list-alt"> Категории </i></a></li>
           <ul id="dropdown1" class="dropdown-content">
-            <li  class="new-type"><a href="#!">Все категории</a></li>
-            <li  class="new-type"><a href="#!">Автомобили</a></li>
-            <li  class="new-type"><a href="#!">Недвижимость</a></li>
-            <li  class="new-type"><a href="#!">Фото</a></li>
-            <li  class="new-type"><a href="#!">Ноутбуки</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="all" >Все категории</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="auto">Автомобили</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
         </ul>
-        
+         <li><a href="#!"><i class="new-type fas fa-briefcase"> Избранное </i></a></li>
       </ul>
       </div>
     </div>
   </nav>
+  </div>
 
   <ul class="sidenav" id="mobile-demo">
     <li><a href="sass.html">Sass</a></li>

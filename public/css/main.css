@@ -1,8 +1,23 @@
+body{
+     background: #f0f8ff;
+}
+.icons{
+     margin-right: 0.5vh;
+}
 nav{
+
      background: white;
 }
 .fa-star{
      color: #ebc634;
+}
+.add-like{
+     color: #cc509a;
+}
+
+.add-like:hover{
+     cursor: pointer;
+     color: #c42f4a;
 }
 .page-footer{
      background: white;
@@ -18,13 +33,31 @@ nav{
    width: 30vh;
    margin-top:20vh;
 }
-.adv-img{
-     width:400px;
-     height: 270px; 
+
+.new-type{
+     font-size: 20px;
+     font-weight: bold;
 }
+
+.wall-title{
+     font-weight: bold;
+     text-transform: uppercase;
+     margin-bottom:5vh;
+     color: #01AAFF;
+     text-shadow: 1px 1px 2px #070707;
+}
+.adv-img{
+     width:300px;
+     height: 250px; 
+}
+
 .wall{
      margin-top: 5vh;
      margin-bottom: 5vh;
+     background: white;
+     border-radius: 1px;
+     box-shadow: 1px 6px 6px 1px #ccc;
+     padding: 2vh 1vh 0vh 1vh; 
 }
 .image-logo{
      width: 200px;
