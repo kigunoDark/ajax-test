@@ -80,8 +80,7 @@ function renderPage(data) {
      row.innerHTML = finishdata;
    
 }
-
-
+// ВОТ ОНА БЛЯТЬ НО Я ПРОСТО ХОТЕЛ ПОЛУЧИТ ЕБАНЫЙ ИДИ ЧТОБЫ ДАЛЬШЕ ПИСАТь
 function getId(id)
 {
   // const favorite = {
@@ -94,6 +93,7 @@ function getId(id)
     fav_id = id;
     return id;
 }
+
 
 
 async function Render(type) {
