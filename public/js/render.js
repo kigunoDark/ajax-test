@@ -1,6 +1,8 @@
 
 let type = '',data,seller;
 let usualSort = document.getElementById('usual');
+let db = null;
+let fav_id = '';
 
 usualSort.addEventListener('click', () =>{
     type = 'all'
@@ -43,7 +45,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="her(this.value)" value='${data[i]}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="getId(this.value)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
                      </p>
                    </div>
                    
@@ -76,36 +78,24 @@ function renderPage(data) {
     }
      
      row.innerHTML = finishdata;
+   
 }
 
-function her(data)
+
+function getId(id)
 {
-  createDb(data);
-  
+  // const favorite = {
+  //   data: 'her'
+  // }
+  // const tx = db.transaction("own_faworite", "readwrite");
+  // const own_faworite = tx.createObjectStore("own_faworite");
+  // own_faworite.add(favorite);
+   
+    fav_id = id;
+    return id;
 }
-// function createDb(data){
-//   const request = indexedDB.open('favorites');
 
 
-//       request.onupgradeneeded = e => {
-//         const db = e.target.result;
-//         // favorites = {
-//         //   data:data 
-//             // id:id
-//         // }
-//         db.createObjectStore('personal_fav', {keyPath:"id"});
-//           alert("Upgrade");
-//       }
-  
-//       request.onsuccess = e => {
-//         const db = e.target.result;
-//           alert(`Success  ${db.name}`);
-//       }
-  
-//       request.onerror = e => {
-//           alert("Error");
-//       }
-// }
 async function Render(type) {
     const response =  await fetch("https://avito.dump.academy/products");
     data = await response.json();
@@ -115,11 +105,14 @@ async function Render(type) {
     seller= await sellers.json();
     seller = seller.data;
 
-
+    
+    
     const priceSort = document.getElementById("priceSort");
     const raitingSort = document.getElementById('raitingSort');
- 
     const range = document.getElementById('range');
+    let min;
+    let max;
+
     document.getElementById("min").addEventListener('input', restrictToInteger);
     function restrictToInteger() {
         this.value = this.value.replace(/[^\d]/g, '');
@@ -131,11 +124,10 @@ async function Render(type) {
     }
 
       range.addEventListener('click', () => {
-        const min = parseInt(document.getElementById('min').value);
-        const max = parseInt(document.getElementById('max').value);
+        min = parseInt(document.getElementById('min').value);
+        max = parseInt(document.getElementById('max').value);
         
         const arr = [];
-        console.log(data.length)
          for(let i = 0; i < data.length; i++)
          {
            if(data[i].price >= min && data[i].price <=max)
@@ -165,4 +157,20 @@ async function Render(type) {
     renderPage(data);
  }
  
+ function createDb(data){
+  const request = indexedDB.open('favorites');
+      request.onupgradeneeded = e => {
+       db = e.target.result;
+        db.createObjectStore('personal_fav', {keyPath:"id"});
+          alert("Upgrade");
+      }
+      request.onsuccess = e => {
+        const db = e.target.result;
+          alert(`Success  ${db.name}`);
+      }
+      request.onerror = e => {
+          alert("Error");
+      }
+}
+
  Render(type);
