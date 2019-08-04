@@ -45,7 +45,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="getId(this.value)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
                      </p>
                    </div>
                    
@@ -66,7 +66,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><i class="fas fa-heart add-like"></i></span>
+                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
                      </p>
                    </div>
                 </div>
@@ -78,21 +78,9 @@ function renderPage(data) {
     }
      
      row.innerHTML = finishdata;
-   
+     createDb(data);
 }
-// ВОТ ОНА БЛЯТЬ НО Я ПРОСТО ХОТЕЛ ПОЛУЧИТ ЕБАНЫЙ ИДИ ЧТОБЫ ДАЛЬШЕ ПИСАТь
-function getId(id)
-{
-  // const favorite = {
-  //   data: 'her'
-  // }
-  // const tx = db.transaction("own_faworite", "readwrite");
-  // const own_faworite = tx.createObjectStore("own_faworite");
-  // own_faworite.add(favorite);
-   
-    fav_id = id;
-    return id;
-}
+
 
 
 
@@ -155,22 +143,62 @@ async function Render(type) {
     });
     
     renderPage(data);
+  
  }
  
+
  function createDb(data){
+
   const request = indexedDB.open('favorites');
+
       request.onupgradeneeded = e => {
        db = e.target.result;
-        db.createObjectStore('personal_fav', {keyPath:"id"});
-          alert("Upgrade");
+        const ownFav = db.createObjectStore('own_faworites', {keyPath:"id"});
+        console.log('Is upgrade')
       }
       request.onsuccess = e => {
-        const db = e.target.result;
-          alert(`Success  ${db.name}`);
+         db = e.target.result;
+         console.log('Is success');
       }
       request.onerror = e => {
-          alert("Error");
-      }
+        console.log('Is error')
+  }
 }
 
+
  Render(type);
+
+ function addFavorite(id)
+ {
+   console.log(id.value);
+  
+  
+   const favorite = {
+     id:id.value,
+     data: data[id.value]
+   }
+   const tx = db.transaction("own_faworites", "readwrite");
+
+   const own_fav= tx.objectStore("own_faworites");
+   own_fav.add(favorite);
+   
+     
+ }
+
+
+    // const viewFav = document.getElementById('view_favorites');
+
+    // viewFav.addEventListener('click', viewFavorites );
+    // function viewFavorites()
+    // {
+    //   const tx = db.transaction('own_faworites', "readonly");
+    //   const own_fav = tx.objectStore('own_faworites');
+    //   const request =  own_fav.openCursor();
+    //   request.onsuccess = e =>{
+    //       const cursor = e.target.result;
+    //       if(cursor)
+    //       {
+    //         cursor.continue();
+    //       }
+    //     }
+    // }
