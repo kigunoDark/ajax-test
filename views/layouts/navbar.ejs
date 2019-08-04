@@ -11,7 +11,7 @@
 <body>
 <div class="navbar-fixed">
 <nav>
-    <div class="nav-wrapper ">
+    <div class="nav-wrapper">
     <div class="container">
       <a href="/" class="brand-logo"><img class="image-logo" src="./images/avito_logo.png"/></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -28,6 +28,40 @@
       </ul>
       </div>
     </div>
+    <div class="menu container-fluid">
+    <div class="container">
+    <div class="row">
+        <div class="menu-items col s12 m4">
+            <label>
+                <input class="with-gap" class="sort-type" id="usual" name="group1" type="radio" checked />
+                <span>Обычный</span>
+            </label>
+
+            <label>
+                <input class="with-gap" class="sort-type" id="raitingSort" name="group1" type="radio" />
+                <span>Рейтинг</span>
+            </label>
+                            
+            <label>
+                <input class="with-gap" class="sort-type" id="priceSort"  name="group1" type="radio" />
+                <span>Цена</span>
+            </label>    
+        </div>
+         <div class="col s12 m8">
+        
+                 <div class="input-field col s4">
+                    <input  type="number" placeholder="Мин. сумма" name='min' id="min" value />
+                </div>
+                <div class="input-field col s4">
+                    
+                    <input  id="max" type="number" placeholder="Макс. сумма"  name='max' value/>             
+                </div>
+                <button id="range">Искать</button>
+                </div>
+         </div>
+        </div>
+   </div>
+</div>
   </nav>
   </div>
 

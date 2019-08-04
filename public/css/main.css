@@ -4,9 +4,27 @@ body{
 .icons{
      margin-right: 0.5vh;
 }
+.faworites-block {
+      display: inline;
+      white-space:nowrap;
+}
+.menu-items{
+     margin-top: 0.5vh;
+}
+.input-field{
+     height: 1px;
+}
+.nav-wrapper{
+     border-bottom: 1px solid black;
+}
 nav{
 
      background: white;
+}
+.warning{
+     border: 2px solid #FF6163;
+     padding: 3vh;
+     margin-bottom:3vh; 
 }
 .fa-star{
      color: #ebc634;
@@ -22,11 +40,22 @@ nav{
 .page-footer{
      background: white;
      height: 8vh;
-     box-shadow: 1px -1px 5px 1px rgba(0, 0, 0, .2);
+     box-shadow: 1px -1px 5px 1px rgba(0, 0, 0, .3);
      color:  #01AAFF;
      font-size: 18px;
      font-weight: bold;
      text-transform: uppercase;
+}
+.menu {
+     background: rgb(148, 226, 216);
+     padding: 2vh;
+     height: 15vh;
+     box-shadow: 1px 6px 8px 1px rgb(112, 107, 107);
+}
+
+.menu span{
+     color: white;
+     font-weight: bold;
 }
 .dropdown-content
 {
@@ -38,7 +67,10 @@ nav{
      font-size: 20px;
      font-weight: bold;
 }
-
+input{
+     color:white;   
+     font-weight: bold;
+}
 .wall-title{
      font-weight: bold;
      text-transform: uppercase;
@@ -46,8 +78,9 @@ nav{
      color: #01AAFF;
      text-shadow: 1px 1px 2px #070707;
 }
-#sort{
-     margin-left: 1.5vh;
+.favorite {
+     border: 0;
+     background: none;
 }
 .adv-img{
      width:300px;
@@ -55,7 +88,7 @@ nav{
 }
 
 .wall{
-     margin-top: 5vh;
+     margin-top: 20vh;
      margin-bottom: 5vh;
      background: white;
      border-radius: 1px;
@@ -83,3 +116,25 @@ nav ul li a{
      font-weight: bold;
      text-transform: capitalize;
 }
+
+
+#sort{
+     margin-left: 1.5vh;
+}
+
+#range{
+     border:none;
+     background: #01AAFF;
+     padding: 1vh 2vh 1vh 2vh;
+     cursor: pointer;
+     color: white;
+     font-weight: bold;
+     text-transform: uppercase;
+     margin-top: 3vh;
+}
+#range:hover{
+     background: rgb(10, 120, 175);
+}
+input[type=number]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+   }
