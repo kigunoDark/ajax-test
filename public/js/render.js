@@ -3,6 +3,8 @@ let type = '',data,seller;
 let usualSort = document.getElementById('usual');
 let db = null;
 let fav_id = '';
+let indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
+let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
 
 usualSort.addEventListener('click', () =>{
     type = 'all'
@@ -141,7 +143,7 @@ async function Render(type) {
 
         renderPage(data);
     });
-    
+    console.log(data)
     renderPage(data);
   
  }
@@ -153,7 +155,8 @@ async function Render(type) {
 
       request.onupgradeneeded = e => {
        db = e.target.result;
-        const ownFav = db.createObjectStore('own_faworites', {keyPath:"id"});
+        const ownFav = db.createObjectStore('own_faworites', {  autoIncrement : true });
+        
         console.log('Is upgrade')
       }
       request.onsuccess = e => {
@@ -170,12 +173,11 @@ async function Render(type) {
 
  function addFavorite(id)
  {
-   console.log(id.value);
-  
-  
+ 
+
    const favorite = {
-     id:id.value,
-     data: data[id.value]
+     
+     favorite: data[id.value]
    }
    const tx = db.transaction("own_faworites", "readwrite");
 
@@ -186,19 +188,33 @@ async function Render(type) {
  }
 
 
-    // const viewFav = document.getElementById('view_favorites');
+    const viewFav = document.getElementById('view_favorites');
 
-    // viewFav.addEventListener('click', viewFavorites );
-    // function viewFavorites()
-    // {
-    //   const tx = db.transaction('own_faworites', "readonly");
-    //   const own_fav = tx.objectStore('own_faworites');
-    //   const request =  own_fav.openCursor();
-    //   request.onsuccess = e =>{
-    //       const cursor = e.target.result;
-    //       if(cursor)
-    //       {
-    //         cursor.continue();
-    //       }
-    //     }
-    // }
+    viewFav.addEventListener('click', viewFavorites );
+
+    
+    function viewFavorites()
+    {
+      const tx = db.transaction('own_faworites', "readonly");
+      const own_fav = tx.objectStore('own_faworites');
+      const request =  own_fav.openCursor();
+      let favorites = [];
+      request.onsuccess = e =>{
+          const cursor = e.target.result;
+          if(cursor)
+          {
+            
+          favorites.push(cursor.value.favorite)
+          
+            cursor.continue();
+           
+          } 
+          renderPage(favorites); 
+}
+console.log(favorites.length);
+  for(let i = 0; i < favorites.length; i++)
+  {
+    console.log(favorites[i].title);
+  }
+        
+}
