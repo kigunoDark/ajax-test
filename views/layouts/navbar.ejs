@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/materialize.css">
     <link href="/css/main.css" type="text/css" rel="stylesheet"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <title>Avito</title>
 </head>
 <body>
@@ -14,7 +21,7 @@
     <div class="nav-wrapper">
     <div class="container">
       <a href="/" class="brand-logo"><img class="image-logo" src="./images/avito_logo.png"/></a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"> <i class="fas fa-list-alt">  </i></a>
       <ul class="right hide-on-med-and-down">
          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Категории  <i class="fas fa-list-alt">  </i></a></li>
           <ul id="dropdown1" class="dropdown-content">
@@ -23,40 +30,45 @@
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
+            
         </ul>
-         <li><a href="#!" id="view_favorites">  Избранное  <i class="fas fa-briefcase"></i></a></li>
       </ul>
       </div>
     </div>
     <div class="menu container-fluid">
     <div class="container">
     <div class="row">
-        <div class="menu-items col s12 m4">
+        <div class="menu-items col s6 m6 ">
             <label>
-                <input class="with-gap" class="sort-type" id="usual" name="group1" type="radio" checked />
-                <span>Обычный</span>
+                <input class="with-gap"  id="usual" name="group1" type="radio" checked />
+                <span><i class="fas fa-globe-africa"></i></span>
             </label>
 
             <label>
-                <input class="with-gap" class="sort-type" id="raitingSort" name="group1" type="radio" />
-                <span>Рейтинг</span>
+                <input class="with-gap" id="raitingSort" name="group1" type="radio" />
+                <span><i class="fas fa-star"></i></span>
             </label>
                             
             <label>
-                <input class="with-gap" class="sort-type" id="priceSort"  name="group1" type="radio" />
-                <span>Цена</span>
+                <input class="with-gap"  id="priceSort"  name="group1" type="radio" />
+                <span><i class="far fa-money-bill-alt"></i></span>
             </label>    
+                  <label>
+                <input class="with-gap" id="view_favorites"  name="group1" type="radio" />
+                <span><i class="fas fa-heart"></i></span>
+            </label>
+
+              
         </div>
-         <div class="col s12 m8">
-        
-                 <div class="input-field col s4">
-                    <input  type="number" placeholder="Мин. сумма" name='min' id="min" value />
+         <div class="col s6 m6">
+                 <div class="input-field col s6 m4">
+                    <input  type="number" placeholder="min" name='min' id="min" value />
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s6 m4">
                     
-                    <input  id="max" type="number" placeholder="Макс. сумма"  name='max' value/>             
+                    <input  id="max" type="number" placeholder="max"  name='max' value/>             
                 </div>
-                <button id="range">Искать</button>
+                <button id="range">ОК</button>
                 </div>
          </div>
         </div>
@@ -65,11 +77,26 @@
   </nav>
   </div>
 
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">Javascript</a></li>
-    <li><a href="mobile.html">Mobile</a></li>
+    <ul class="sidenav" id="mobile-demo">
+     <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"> <i class="fas fa-list-alt">  </i> Категории </div>
+      <div class="collapsible-body">
+       <ul>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="all" >Все категории</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="auto">Автомобили</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
+            <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
+        </ul>
+    </li>
+    <div class="collapsible-header"> <span id="view_favorites"> <i class="fas fa-briefcase"></i> Избранное  </span></div>
+   
   </ul>
+        
+
+     
+  </ul>
+          
           
             

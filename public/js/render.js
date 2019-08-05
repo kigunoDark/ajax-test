@@ -33,7 +33,7 @@ function renderPage(data) {
     for ( let i = 0; i < data.length; i++){
         if(data[i].price !== undefined) {
             if(type === '' || type==="all"){
-             finishdata += `<div class="col s12 m4">
+             finishdata += `<div class="col s12 m6 l4 xl4">
             
              <div class="card">
   
@@ -55,7 +55,7 @@ function renderPage(data) {
              </div>`
             } else if(type === data[i].category)
             {
-             finishdata += `<div class="col s12 m4">
+             finishdata += `<div class="col s12 m6 l4 xl4">
              <div class="card">
   
                    <div class="card-image">
@@ -188,18 +188,19 @@ async function Render(type) {
  }
 
 
-    const viewFav = document.getElementById('view_favorites');
+const viewFav = document.getElementById('view_favorites');
 
-    viewFav.addEventListener('click', viewFavorites );
+viewFav.addEventListener('click', viewFavorites );
 
     
-    function viewFavorites()
-    {
-      const tx = db.transaction('own_faworites', "readonly");
-      const own_fav = tx.objectStore('own_faworites');
-      const request =  own_fav.openCursor();
-      let favorites = [];
-      request.onsuccess = e =>{
+function viewFavorites()
+  {
+    const tx = db.transaction('own_faworites', "readonly");
+    const own_fav = tx.objectStore('own_faworites');
+    const request =  own_fav.openCursor();
+    let favorites = [];
+
+    request.onsuccess = e =>{
           const cursor = e.target.result;
           if(cursor)
           {
@@ -210,11 +211,13 @@ async function Render(type) {
            
           } 
           renderPage(favorites); 
-}
-console.log(favorites.length);
-  for(let i = 0; i < favorites.length; i++)
-  {
-    console.log(favorites[i].title);
+    }
   }
-        
-}
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+      

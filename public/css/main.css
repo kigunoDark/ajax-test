@@ -27,11 +27,25 @@ nav{
      padding: 3vh;
      margin-bottom:3vh; 
 }
+.fa-globe-africa{
+     font-size: 16px;
+     color: #00AAFF;
+}
 .fa-star{
      color: #ebc634;
+     font-size: 16px;
+}
+.fa-heart{
+     color: #FF6163;
+     font-size: 16px;  
 }
 .add-like{
      color: #cc509a;
+    
+}
+.fa-money-bill-alt{
+     font-size: 16px;   
+     color: #97CF26;
 }
 
 .add-like:hover{
@@ -140,3 +154,56 @@ nav ul li a{
 input[type=number]::-webkit-inner-spin-button {
      -webkit-appearance: none;
 }
+
+.sidenav-trigger{
+     color:black;
+}
+
+
+
+@media screen and (max-width: 640px) {
+     /*   .brand-logo__link {
+       left: 20% !important;
+   
+     } */
+     .adv-img{
+          width:250px;
+          height: 250px; 
+     }
+     .menu{
+          height: 25vh;
+     }
+     .wall{
+          margin-top: 30vh;
+     }
+     
+     .img-main-background {
+         background-image: none;
+     }
+ }
+ 
+ @media screen and (max-width: 568px) {
+     /*   .brand-logo__link {
+       left: 20% !important;
+   
+     } */
+     .adv-img{
+          width:250px;
+          height: 250px; 
+     }
+     .menu{
+          height: 32vh;
+     }
+     .wall{
+          margin-top: 38vh;
+     }
+     .wall-title{
+          font-size: 18px;
+     }
+     .img-main-background {
+         background-image: none;
+     }
+ }
+
+ 
+ 
