@@ -19,6 +19,7 @@
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper">
+
     <div class="container">
       <a href="/" class="brand-logo"><img class="image-logo" src="./images/avito_logo.png"/></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"> <i class="fas fa-list-alt">  </i></a>
@@ -30,7 +31,6 @@
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
             <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
-            
         </ul>
       </ul>
       </div>
@@ -57,45 +57,37 @@
                 <input class="with-gap" id="view_favorites"  name="group1" type="radio" />
                 <span><i class="fas fa-heart"></i></span>
             </label>
-
-              
         </div>
-         <div class="col s6 m6">
-                 <div class="input-field col s6 m4">
-                    <input  type="number" placeholder="min" name='min' id="min" value />
-                </div>
-                <div class="input-field col s6 m4">
-                    
-                    <input  id="max" type="number" placeholder="max"  name='max' value/>             
-                </div>
+            <div class="col s6 m6">
+                    <div class="input-field col s6 m4">
+                        <input  type="number" placeholder="min" name='min' id="min" value />
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <input  id="max" type="number" placeholder="max"  name='max' value/>             
+                    </div>
                 <button id="range">ОК</button>
-                </div>
+            </div>
          </div>
         </div>
    </div>
 </div>
-  </nav>
+</nav>
   </div>
-
     <ul class="sidenav" id="mobile-demo">
-     <ul class="collapsible">
-    <li>
-      <div class="collapsible-header"> <i class="fas fa-list-alt">  </i> Категории </div>
-      <div class="collapsible-body">
-       <ul>
-            <li><a href="javascript:{}" onclick="getType(this.id);" id ="all" >Все категории</a></li>
-            <li><a href="javascript:{}" onclick="getType(this.id);" id ="auto">Автомобили</a></li>
-            <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
-            <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
-            <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
-        </ul>
-    </li>
-    <div class="collapsible-header"> <span id="view_favorites"> <i class="fas fa-briefcase"></i> Избранное  </span></div>
-   
-  </ul>
-        
-
-     
+        <ul class="collapsible">
+            <li>
+            <div class="collapsible-header"> <i class="fas fa-list-alt">  </i> Категории </div>
+            <div class="collapsible-body">
+                <ul>
+                    <li><a href="javascript:{}" onclick="getType(this.id);" id ="all" >Все категории</a></li>
+                    <li><a href="javascript:{}" onclick="getType(this.id);" id ="auto">Автомобили</a></li>
+                    <li><a href="javascript:{}" onclick="getType(this.id);" id ="immovable">Недвижимость</a></li>
+                    <li><a href="javascript:{}" onclick="getType(this.id);" id ="cameras">Фото</a></li>
+                    <li><a href="javascript:{}" onclick="getType(this.id);" id ="laptops">Ноутбуки</a></li>
+                </ul>
+            </li>
+        <div class="collapsible-header"> <span id="view_favorites"> <i class="fas fa-briefcase"></i> Избранное  </span></div>
+    </ul>    
   </ul>
           
           
