@@ -21,8 +21,7 @@
     <title>Avito</title>
 </head>
 
-<body>
-    <div class="navbar-fixed">
+<div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
 
@@ -39,42 +38,43 @@
                             <li><a href="javascript:{}" onclick="getType(this.id);" id="cameras">Фото</a></li>
                             <li><a href="javascript:{}" onclick="getType(this.id);" id="laptops">Ноутбуки</a></li>
                         </ul>
+                        
                     </ul>
                 </div>
             </div>
             <div class="menu container-fluid">
                 <div class="container">
                     <div class="row">
-                        <div class="menu-items col s6 m6 ">
-                            <label>
-                                <input class="with-gap" id="usual" name="group1" type="radio" checked />
-                                <span><i class="fas fa-globe-africa"></i></span>
-                            </label>
-
-                            <label>
-                                <input class="with-gap" id="raitingSort" name="group1" type="radio" />
-                                <span><i class="fas fa-star"></i></span>
-                            </label>
-
-                            <label>
-                                <input class="with-gap" id="priceSort" name="group1" type="radio" />
-                                <span><i class="far fa-money-bill-alt"></i></span>
-                            </label>
-                            <label>
-                                <input class="with-gap" id="view_favorites" name="group1" type="radio" />
-                                <span><i class="fas fa-heart"></i></span>
-                            </label>
+                        <div class="menu-items col s3 m3 ">
+                                <div class="container"> 
+                                        <input type="search" placeholder="Поиск" class="search" oninput="search(event)"/>
+                                </div>
                         </div>
-                        <div class="col s6 m6">
-                            <div class="input-field col s6 m4">
-                                <input type="number" placeholder="min" name='min' id="min" value />
-                            </div>
-                            <div class="input-field col s6 m4">
-                                <input id="max" type="number" placeholder="max" name='max' value />
-                            </div>
-                            <button id="range">ОК</button>
+
+                        <div class="col s9 m9">
+                            <div class="right">
+                                <label>
+                                        <input class="with-gap" id="usual" name="group1" type="radio" checked />
+                                        <span><i class="fas fa-globe-africa"></i></span>
+                                    </label>
+        
+                                    <label>
+                                        <input class="with-gap" id="raitingSort" name="group1" type="radio" />
+                                        <span><i class="fas fa-star"></i></span>
+                                    </label>
+        
+                                    <label>
+                                        <input class="with-gap" id="priceSort" name="group1" type="radio" />
+                                        <span><i class="far fa-money-bill-alt"></i></span>
+                                    </label>
+                                    <label>
+                                        <input class="with-gap" id="view_favorites" name="group1" type="radio" />
+                                        <span><i class="fas fa-heart"></i></span>
+                                    </label> 
+                                </div>   
+                           
                         </div>
-                    </div>
+                    </div>    
                 </div>
             </div>
     </div>
@@ -97,16 +97,26 @@
                 </span></div>
         </ul>
     </ul>
-
+<body>
+ 
     <div class="wall container">
-        <div class="row">
-            <h3 class="center wall-title"> Доска объявлений </h3>
-
+        <div class="row">            
+            <div class="col s6 m6">
+                <h3 class="wall-title center"> Доска объявлений </h3>
+            </div>
+            <div class="col s6 m6">
+                    <div class="input-field col s6 m4">
+                        <input type="number" placeholder="min price" name='min' id="min" value />
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <input id="max" type="number" placeholder="max price" name='max' value />
+                    </div>
+                <button id="range">ОК</button> 
+            </div>
+        </div>
             <div class="row" id="row"></div>
 
-        </div>
     </div>
-
 
     <footer class="page-footer">
         <div class="container center">

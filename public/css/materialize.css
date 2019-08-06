@@ -6108,19 +6108,19 @@ label {
    ========================================================================== */
 /* Style Placeholders */
 ::-webkit-input-placeholder {
-  color: #ffffff;
+  color: rgb(218, 28, 28);
 }
 ::-moz-placeholder {
-  color: #ffffff;
+  color: rgb(218, 28, 28);
 }
 :-ms-input-placeholder {
-  color: #ffffff;
+  color: rgb(218, 28, 28);
 }
 ::-ms-input-placeholder {
-  color: #ffffff;
+  color: rgb(218, 28, 28);
 }
 ::placeholder {
-  color: #ffffff;
+  color: rgb(218, 28, 28);
   font-weight: bold;  
   
 }

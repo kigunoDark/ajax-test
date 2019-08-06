@@ -1,7 +1,19 @@
  <%- include('./layouts/navbar.ejs')%>
     <div class="wall container"> 
-        <div class="row">     
-            <h3 class="center wall-title"> Доска объявлений </h3>
+        <div class="row">            
+            <div class="col s6 m6">
+                <h3 class="wall-title center"> Доска объявлений </h3>
+            </div>
+            <div class="col s6 m6">
+                    <div class="input-field col s6 m4">
+                        <input type="number" placeholder="min price" name='min' id="min" value />
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <input id="max" type="number" placeholder="max price" name='max' value />
+                    </div>
+                <button id="range">ОК</button> 
+            </div>
+        </div>
         <div class="row" id="row"></div> 
 
          </div> 

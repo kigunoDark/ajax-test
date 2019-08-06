@@ -5,6 +5,7 @@ let db = null;
 let fav_id = '';
 let indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+let trigger = false;
 
 usualSort.addEventListener('click', () => {
   type = 'all'
@@ -30,7 +31,7 @@ function renderPage(data) {
   else {
     for (let i = 0; i < data.length; i++) {
       if (data[i].price !== undefined) {
-        if (type === '' || type === "all") {
+        if (type === '' || type === "all" && trigger==="add_favorite") {
           finishdata += `<div class="col s12 m6 l4 xl4">
             
              <div class="card">
@@ -44,16 +45,15 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${data[i].id}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="deleteFavorite(this)" value='${data[i].id}'><i class="fas fa-minus-circle"></i></button></span> 
                      </p>
                    </div>
-                   
                 </div>
              </div>`
         } else if (type === data[i].category) {
           finishdata += `<div class="col s12 m6 l4 xl4">
              <div class="card">
-  
                    <div class="card-image">
                    <img class="activator adv-img" src="https:${data[i].pictures[0]}">
                    <span class="card-title">${seller[data[i].relationships.seller].name}</span>
@@ -70,7 +70,6 @@ function renderPage(data) {
                 </div>
              </div>`
         }
-
       }
     }
   }
@@ -145,7 +144,6 @@ async function Render(type) {
 
     renderPage(data);
   });
-  console.log(data)
   renderPage(data);
 
 }
@@ -157,7 +155,7 @@ function createDb(data) {
 
   request.onupgradeneeded = e => {
     db = e.target.result;
-    const ownFav = db.createObjectStore('own_faworites', { autoIncrement: true });
+    const ownFav = db.createObjectStore('own_faworites', {keyPath: "id" });
 
     console.log('Is upgrade')
   }
@@ -175,13 +173,11 @@ Render(type);
 
 function addFavorite(id) {
 
-
   const favorite = {
-
+    id: id.value,
     favorite: data[id.value]
   }
   const tx = db.transaction("own_faworites", "readwrite");
-
   const own_fav = tx.objectStore("own_faworites");
   own_fav.add(favorite);
 
@@ -189,17 +185,27 @@ function addFavorite(id) {
 }
 
 
+let deleteFavorite = async (id) =>
+{
+  console.log(id.value);
+  
+    const tx = db.transaction('own_faworites', 'readwrite');
+    const own_fav = tx.objectStore('own_faworites');
+     await own_fav.delete(id.value);
+     viewFavorites() 
+        
+}
+
 const viewFav = document.getElementById('view_favorites');
 
 viewFav.addEventListener('click', viewFavorites);
 
-
 function viewFavorites() {
+  trigger = true; 
   const tx = db.transaction('own_faworites', "readonly");
   const own_fav = tx.objectStore('own_faworites');
   const request = own_fav.openCursor();
   let favorites = [];
-
   request.onsuccess = e => {
     const cursor = e.target.result;
     if (cursor) {
@@ -213,20 +219,18 @@ function viewFavorites() {
   }
 }
 
+
 async function search(e) {
   await updateData();
-
-  const regex = RegExp(`${e.currentTarget.value}`, 'i');
+  const regex = RegExp(`${e.target.value}`, 'i');
   data = data.filter((word) => {
     return regex.test(word.title);
   });
   renderPage(data);
   console.log(data);
 }
-
-
 $(document).ready(function () {
-  $('.sidenav').sidenav();
+ $('.sidenav').sidenav();
 });
 $(document).ready(function () {
   $('.collapsible').collapsible();

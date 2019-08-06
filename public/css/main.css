@@ -24,8 +24,8 @@ nav{
 }
 .warning{
      border: 2px solid #FF6163;
-     padding: 3vh;
-     margin-bottom:3vh; 
+     padding: 6vh;
+     margin-bottom:15vh; 
 }
 .fa-globe-africa{
      font-size: 16px;
@@ -85,16 +85,22 @@ nav{
      font-size: 20px;
      font-weight: bold;
 }
+.search{
+     color:white; 
+     width: 20px;  
+}
 input{
-     color:white;   
+    
+     color:rgb(0, 0, 0);   
      font-weight: bold;
 }
 .wall-title{
      font-weight: bold;
+     font-size: 20px;
      text-transform: uppercase;
      margin-bottom:5vh;
-     color: rgb(218, 28, 28);;
-     text-shadow: 1px 2px 3px rgb(15, 15, 15);;
+     color: rgb(31, 29, 29);;
+   
 }
 .favorite {
      border: 0;
@@ -112,6 +118,7 @@ input{
      border-radius: 1px;
      box-shadow: 1px 6px 6px 1px #ccc;
      padding: 2vh 1vh 0vh 1vh; 
+     padding-bottom: 100px;
 }
 .image-logo{
      width: 200px;
@@ -142,17 +149,18 @@ nav ul li a{
 
 #range{
      border:none;
-     background: rgb(255, 255, 255);
-     padding: 1vh 2vh 1vh 2vh;
+     background: rgb(218, 28, 28);
+     padding: 1vh 3vh 1vh 3vh;
+     border-radius: 1px;
      cursor: pointer;
-     color: rgb(0, 0, 0);
+     color: rgb(255, 255, 255);
      font-weight: bold;
      text-transform: uppercase;
-     margin-top: 3vh;
+     margin-top: 5vh;
 }
 #range:hover{
-     background: rgb(218, 28, 28);
-     color: white;
+     background: rgb(24, 23, 23);
+     color: rgb(255, 255, 255);
 }
 input[type=number]::-webkit-inner-spin-button {
      -webkit-appearance: none;
