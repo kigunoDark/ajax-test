@@ -75,6 +75,9 @@ input{
      color:rgb(0, 0, 0);   
      font-weight: bold;
 }
+.fa-star{
+     color: rgb(255, 188, 44);
+}
 .wall-title{
      font-weight: bold;
      font-size: 20px;

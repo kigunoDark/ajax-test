@@ -6,9 +6,11 @@ let fav_id = '';
 let indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB;
 let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
 let trigger = false;
+let c = 0;
 
 usualSort.addEventListener('click', () => {
   type = 'all'
+  trigger = false;
   Render(type);
 })
 
@@ -63,7 +65,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="favoriteManip(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="favoriteManip(this)" value='${data[i].id}'> <i class="fas fa-heart add-like"></i> </button></span> 
                      </p>
                    </div>
                 </div>
@@ -158,7 +160,7 @@ function createDb(data) {
 
   request.onupgradeneeded = e => {
     db = e.target.result;
-    const ownFav = db.createObjectStore('own_faworites', {keyPath: "id" });
+    const ownFav = db.createObjectStore('own_faworites', {keyPath:'id'});
 
     console.log('Is upgrade')
   }
@@ -174,23 +176,30 @@ function createDb(data) {
 Render(type);
 
 async function favoriteManip(id) {
-
-  const favorite = {
-    id: id.value,
-    favorite: data[id.value]
-  }
+  
+ console.log(id.value);
   const tx = db.transaction("own_faworites", "readwrite");
   const own_fav = tx.objectStore("own_faworites");
-
+  
   
   if(trigger === false)
   {
+    
+     const favorite = {
+      id: id.value,
+      favorite: data[id.value]
+    }
      own_fav.add(favorite);
      M.toast({html: 'Вы добавили товар в избранное'});
   } else {
-    await own_fav.delete(id.value);
-    M.toast({html: 'Вы удалили товар из избранного'});
-    viewFavorites()
+  
+      console.log
+
+      await own_fav.delete(id.value);
+      M.toast({html: 'Вы удалили товар из избранного'});
+      viewFavorites();
+    
+   
   }
 
 }
