@@ -32,7 +32,7 @@ function renderPage(data) {
     for (let i = 0; i < data.length; i++) {
       if (data[i].price !== undefined) {
         if (type === '' || type === "all") {
-          finishdata += `<div class="col s12 m6 l4 xl4">
+          finishdata += `<div class="col s12 m6 l6 xl4">
             
              <div class="card">
                   <div class="card-image">
@@ -51,7 +51,7 @@ function renderPage(data) {
                 </div>
              </div>`
         } else if (type === data[i].category) {
-          finishdata += `<div class="col s12 m6 l4 xl4">
+          finishdata += `<div class="col s12 m6 l6 xl4">
              <div class="card">
                    <div class="card-image">
                    <img class="activator adv-img" src="https:${data[i].pictures[0]}">
