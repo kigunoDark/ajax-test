@@ -31,7 +31,7 @@ function renderPage(data) {
   else {
     for (let i = 0; i < data.length; i++) {
       if (data[i].price !== undefined) {
-        if (type === '' || type === "all" && trigger==="add_favorite") {
+        if (type === '' || type === "all") {
           finishdata += `<div class="col s12 m6 l4 xl4">
             
              <div class="card">
@@ -45,8 +45,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${data[i].id}'> <i class="fas fa-heart add-like"></i> </button></span> 
-                         <span class="icons"><button class="favorite" onclick="deleteFavorite(this)" value='${data[i].id}'><i class="fas fa-minus-circle"></i></button></span> 
+                         <span class="icons"><button class="favorite" onclick="favoriteManip(this)" value='${data[i].id}'> <i class="fas fa-heart add-like"></i> </button></span>  
                      </p>
                    </div>
                 </div>
@@ -64,7 +63,7 @@ function renderPage(data) {
                      <p>
                          <span class="icons"> <i class="fas fa-star">  ${seller[data[i].relationships.seller].rating}</i> </span> 
                          <span class="icons"><i class="fas fa-camera-retro">  ${data[i].pictures.length}</i></span>
-                         <span class="icons"><button class="favorite" onclick="addFavorite(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
+                         <span class="icons"><button class="favorite" onclick="favoriteManip(this)" value='${i}'> <i class="fas fa-heart add-like"></i> </button></span> 
                      </p>
                    </div>
                 </div>
@@ -84,6 +83,7 @@ async function updateData() {
   data = await response.json();
   data = data.data;
 }
+
 
 async function Render(type) {
   await updateData();
@@ -116,6 +116,7 @@ async function Render(type) {
 
   range.addEventListener('click', async () => {
     await updateData();
+    trigger = false;
     min = parseInt(document.getElementById('min').value);
     max = parseInt(document.getElementById('max').value);
 
@@ -131,6 +132,7 @@ async function Render(type) {
 
   raitingSort.addEventListener('click', async () => {
     await updateData();
+    trigger = false;
     data.sort((a, b) => seller[b.relationships.seller].rating - seller[a.relationships.seller].rating);
 
     renderPage(data);
@@ -138,6 +140,7 @@ async function Render(type) {
 
   priceSort.addEventListener("click", async () => {
     await updateData();
+    trigger = false;
     data = data.sort(function (obj1, obj2) {
       return obj1.price - obj2.price;
     });
@@ -168,10 +171,9 @@ function createDb(data) {
   }
 }
 
-
 Render(type);
 
-function addFavorite(id) {
+async function favoriteManip(id) {
 
   const favorite = {
     id: id.value,
@@ -179,28 +181,27 @@ function addFavorite(id) {
   }
   const tx = db.transaction("own_faworites", "readwrite");
   const own_fav = tx.objectStore("own_faworites");
-  own_fav.add(favorite);
 
-
-}
-
-
-let deleteFavorite = async (id) =>
-{
-  console.log(id.value);
   
-    const tx = db.transaction('own_faworites', 'readwrite');
-    const own_fav = tx.objectStore('own_faworites');
-     await own_fav.delete(id.value);
-     viewFavorites() 
-        
+  if(trigger === false)
+  {
+     own_fav.add(favorite);
+     M.toast({html: 'Вы добавили товар в избранное'});
+  } else {
+    await own_fav.delete(id.value);
+    M.toast({html: 'Вы удалили товар из избранного'});
+    viewFavorites()
+  }
+
 }
+
 
 const viewFav = document.getElementById('view_favorites');
 
 viewFav.addEventListener('click', viewFavorites);
 
 function viewFavorites() {
+  
   trigger = true; 
   const tx = db.transaction('own_faworites', "readonly");
   const own_fav = tx.objectStore('own_faworites');
@@ -229,6 +230,8 @@ async function search(e) {
   renderPage(data);
   console.log(data);
 }
+
+
 $(document).ready(function () {
  $('.sidenav').sidenav();
 });
