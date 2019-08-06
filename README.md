@@ -1,4 +1,4 @@
-#ЗНиже приведены некоторые пояснения
+#Ниже приведены некоторые пояснения
 
 ## Установка
 
@@ -9,7 +9,13 @@
 4. Ищем готовое решение в браузере http://localhost:3000.
 
 
-**HTML**: Changed a view engine of my web project (ejs now), create a new controllers for user and admin, created a new page for admin, and added a dropdown menu for the login of admin on a secret page, especially for an admin.
 
+**HTML**: В папке views был создан <b> index.html </b> файл, на случай, если на комьютере нет Node.js или не хочется заморачиваться. Все готовое решение можно посмотреть открыв этот файл в своем браузере.
+
+
+## Что испольщовал для решения задач
+1. Node.js - для запуска проекта, и личного удобства.
+2. IndexedDB - для хранения данных на стороне клиента.
+3. Materializecss framework - да, я знаю , что знание фрейморков не делает меня крутым front-end разработчиком, но я уже привык к ним и мне удобно с ними работать. Быстрее, вполне красиво. 
 
 
